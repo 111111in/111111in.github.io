@@ -6284,11 +6284,3 @@ blockquote.pullquote.right {
   display: none;
   background: rgba(0,0,0,0.6);
 }
-
-/** 鼠标样式 **/
-body {
-  cursor: url(https://blog-static.cnblogs.com/files/zhangshuhao1116/1.ico), auto;
-}
-a,a:visited {
-  cursor: url(https://blog-static.cnblogs.com/files/zhangshuhao1116/2.ico), auto;
-}
