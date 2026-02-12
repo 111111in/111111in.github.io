@@ -30,8 +30,8 @@ jobs:
       env:
         NOTION_PAGE_ID: ${{ secrets.NOTION_PAGE_ID }}
         NEXT_PUBLIC_THEME: heo
-        NEXT_PUBLIC_AUTHOR: auberginewly
-        NEXT_PUBLIC_BIO: hi 我是一只🍆
+        NEXT_PUBLIC_AUTHOR: 琳琳嘤嘤怪
+        NEXT_PUBLIC_BIO: hi I am apple🍎
         NEXT_PUBLIC_LINK: https://111111in.github.io
         NEXT_PUBLIC_BEI_AN: 赣ICP备2025066072号-2
     
