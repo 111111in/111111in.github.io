@@ -91,6 +91,10 @@ const nextConfig = {
       : undefined,
   staticPageGenerationTimeout: 120,
 
+  // GitHub Pages 配置 - 如果不是自定义域名则需要 basePath
+  // basePath: process.env.EXPORT ? '' : '',
+  // assetPrefix: process.env.EXPORT ? '' : '',
+
   // 性能优化配置
   compress: true,
   poweredByHeader: false,
