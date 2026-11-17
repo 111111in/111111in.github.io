@@ -29,10 +29,10 @@ module.exports = {
     extend: {
       colors: {
         day: {
-          DEFAULT: BLOG.BACKGROUND_LIGHT || '#ffffff'
+          DEFAULT: BLOG.BACKGROUND_LIGHT || '#fbfaf8'
         },
         night: {
-          DEFAULT: BLOG.BACKGROUND_DARK || '#111827'
+          DEFAULT: BLOG.BACKGROUND_DARK || '#0e0d12'
         },
         hexo: {
           'background-gray': '#f5f5f5',
@@ -51,9 +51,29 @@ module.exports = {
           7: '#D1D5DB',
           8: '#E5E7EB'
         },
-        primary: '#3758F9',
-        'blue-dark': '#1B44C8',
+        primary: '#7c3aed',
+        'blue-dark': '#6d28d9',
         secondary: '#13C296',
+        // 将 HEO 主题的浅色强调色 indigo 重映射为 violet（呼应 auberginewly 的品牌紫）
+        indigo: {
+          50: '#f5f3ff',
+          100: '#ede9fe',
+          200: '#ddd6fe',
+          300: '#c4b5fd',
+          400: '#a78bfa',
+          500: '#8b5cf6',
+          600: '#7c3aed',
+          700: '#6d28d9',
+          800: '#5b21b6',
+          900: '#4c1d95',
+          950: '#2e1065'
+        },
+        // HEO 深色模式强调色 yellow 重映射为 violet，统一双色为单色品牌紫
+        yellow: {
+          500: '#8b5cf6',
+          600: '#7c3aed',
+          700: '#6d28d9'
+        },
         'body-color': '#637381',
         'body-secondary': '#8899A8',
         warning: '#FBBF24',

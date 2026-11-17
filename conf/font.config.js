@@ -8,11 +8,11 @@ module.exports = {
   // 后面空格隔开的font-light的字体粗细，留空是默认粗细；参考 https://www.tailwindcss.cn/docs/font-weight
   FONT_STYLE: process.env.NEXT_PUBLIC_FONT_STYLE || 'font-sans font-light',
   // 字体CSS 例如 https://npm.elemecdn.com/lxgw-wenkai-webfont@1.6.0/style.css
+  // 采用 Geist（Vercel 出品，auberginewly 同款）+ Noto Sans SC 中文回退，呈现更高级克制的质感
   FONT_URL: [
-    // 'https://npm.elemecdn.com/lxgw-wenkai-webfont@1.6.0/style.css',
-    'https://fonts.googleapis.com/css?family=Bitter:300,400,700&display=swap',
-    'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap',
-    'https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700&display=swap'
+    'https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap',
+    'https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap',
+    'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap'
   ],
 
   // 字体优化配置
@@ -21,7 +21,7 @@ module.exports = {
   FONT_SUBSET: process.env.NEXT_PUBLIC_FONT_SUBSET || 'chinese-simplified',
   // 无衬线字体 例如'"LXGW WenKai"'
   FONT_SANS: [
-    // '"LXGW WenKai"',
+    '"Geist"',
     '"PingFang SC"',
     '-apple-system',
     'BlinkMacSystemFont',
@@ -41,9 +41,9 @@ module.exports = {
   ],
   // 衬线字体 例如'"LXGW WenKai"'
   FONT_SERIF: [
-    // '"LXGW WenKai"',
-    'Bitter',
+    '"Geist"',
     '"Noto Serif SC"',
+    'Georgia',
     'SimSun',
     '"Times New Roman"',
     'Times',

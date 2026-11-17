@@ -80,7 +80,7 @@ function Banner(props) {
     <div
       id='banners'
       onClick={handleClickBanner}
-      className='hidden xl:flex xl:flex-col group h-full bg-white dark:bg-[#1e1e1e] rounded-xl border dark:border-gray-700 mb-3 relative overflow-hidden'>
+      className='hidden xl:flex xl:flex-col group h-full bg-white dark:bg-[#17151d] rounded-xl border dark:border-gray-700 mb-3 relative overflow-hidden'>
       <div
         id='banner-title'
         className='z-10 flex flex-col absolute top-10 left-10'>
@@ -102,7 +102,7 @@ function Banner(props) {
         id='banner-cover'
         style={{ backdropFilter: 'blur(15px)' }}
         className={
-          'z-20 rounded-xl overflow-hidden opacity-0 group-hover:opacity-100 duration-300 transition-all bg-[#4259efdd] dark:bg-[#dca846] dark:text-white cursor-pointer absolute w-full h-full top-0 flex justify-start items-center'
+          'z-20 rounded-xl overflow-hidden opacity-0 group-hover:opacity-100 duration-300 transition-all bg-[#7c3aeddd] dark:bg-[#6d28d9] dark:text-white cursor-pointer absolute w-full h-full top-0 flex justify-start items-center'
         }>
         <div className='ml-12 -translate-x-32 group-hover:translate-x-0 duration-300 transition-all ease-in'>
           <div className='text-7xl text-white font-extrabold'>{coverTitle}</div>
@@ -178,35 +178,35 @@ function GroupMenu() {
     <div className='h-[165px] select-none xl:h-20 flex flex-col justify-between xl:space-y-0 xl:flex-row w-28 lg:w-48 xl:w-full xl:flex-nowrap xl:space-x-3'>
       <SmartLink
         href={url_1}
-        className='group relative overflow-hidden bg-gradient-to-r from-blue-500 to-blue-400 flex h-20 justify-start items-center text-white rounded-xl xl:hover:w-1/2 xl:w-1/3 transition-all duration-500 ease-in'>
+        className='group relative overflow-hidden border border-[#e9e6e1] dark:border-[#25222d] bg-white dark:bg-[#17151d] text-gray-800 dark:text-gray-100 flex h-20 justify-start items-center rounded-xl xl:hover:w-1/2 xl:w-1/3 transition-all duration-300 ease-out hover:border-[#7c3aed] dark:hover:border-[#a78bfa]'>
         <div className='font-bold lg:text-lg  pl-5 relative -mt-2'>
           {title_1}
-          <span className='absolute -bottom-0.5 left-5 w-5 h-0.5 bg-white rounded-full'></span>
+          <span className='absolute -bottom-0.5 left-5 w-5 h-0.5 bg-[#7c3aed] dark:bg-[#a78bfa] rounded-full transition-all duration-300 group-hover:w-8'></span>
         </div>
-        <div className='hidden lg:block absolute right-6  duration-700 ease-in-out transition-all scale-[2] translate-y-6 rotate-12 opacity-20 group-hover:opacity-80 group-hover:scale-100 group-hover:translate-y-0 group-hover:rotate-0'>
+        <div className='hidden lg:block absolute right-6  duration-500 ease-out transition-all scale-[2] translate-y-6 rotate-12 opacity-10 text-[#7c3aed] dark:text-[#a78bfa] group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover:rotate-0'>
           <i className='fa-solid fa-star text-4xl'></i>
         </div>
       </SmartLink>
       <SmartLink
         href={url_2}
-        className='group relative overflow-hidden bg-gradient-to-r from-red-500 to-yellow-500 flex h-20 justify-start items-center text-white rounded-xl xl:hover:w-1/2 xl:w-1/3 transition-all duration-500 ease-in'>
+        className='group relative overflow-hidden border border-[#e9e6e1] dark:border-[#25222d] bg-white dark:bg-[#17151d] text-gray-800 dark:text-gray-100 flex h-20 justify-start items-center rounded-xl xl:hover:w-1/2 xl:w-1/3 transition-all duration-300 ease-out hover:border-[#7c3aed] dark:hover:border-[#a78bfa]'>
         <div className='font-bold lg:text-lg pl-5 relative -mt-2'>
           {title_2}
-          <span className='absolute -bottom-0.5 left-5 w-5 h-0.5 bg-white rounded-full'></span>
+          <span className='absolute -bottom-0.5 left-5 w-5 h-0.5 bg-[#7c3aed] dark:bg-[#a78bfa] rounded-full transition-all duration-300 group-hover:w-8'></span>
         </div>
-        <div className='hidden lg:block absolute right-6  duration-700 ease-in-out transition-all scale-[2] translate-y-6 rotate-12 opacity-20 group-hover:opacity-80 group-hover:scale-100 group-hover:translate-y-0 group-hover:rotate-0'>
+        <div className='hidden lg:block absolute right-6  duration-500 ease-out transition-all scale-[2] translate-y-6 rotate-12 opacity-10 text-[#7c3aed] dark:text-[#a78bfa] group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover:rotate-0'>
           <i className='fa-solid fa-fire-flame-curved text-4xl'></i>
         </div>
       </SmartLink>
       {/* 第三个标签在小屏上不显示 */}
       <SmartLink
         href={url_3}
-        className='group relative overflow-hidden bg-gradient-to-r from-teal-300 to-cyan-300 hidden h-20 xl:flex justify-start items-center text-white rounded-xl xl:hover:w-1/2 xl:w-1/3 transition-all duration-500 ease-in'>
+        className='group relative overflow-hidden border border-[#e9e6e1] dark:border-[#25222d] bg-white dark:bg-[#17151d] text-gray-800 dark:text-gray-100 hidden h-20 xl:flex justify-start items-center rounded-xl xl:hover:w-1/2 xl:w-1/3 transition-all duration-300 ease-out hover:border-[#7c3aed] dark:hover:border-[#a78bfa]'>
         <div className='font-bold text-lg pl-5 relative -mt-2'>
           {title_3}
-          <span className='absolute -bottom-0.5 left-5 w-5 h-0.5 bg-white rounded-full'></span>
+          <span className='absolute -bottom-0.5 left-5 w-5 h-0.5 bg-[#7c3aed] dark:bg-[#a78bfa] rounded-full transition-all duration-300 group-hover:w-8'></span>
         </div>
-        <div className='absolute right-6 duration-700 ease-in-out transition-all scale-[2] translate-y-6 rotate-12 opacity-20 group-hover:opacity-80 group-hover:scale-100 group-hover:translate-y-0 group-hover:rotate-0'>
+        <div className='absolute right-6 duration-500 ease-out transition-all scale-[2] translate-y-6 rotate-12 opacity-10 text-[#7c3aed] dark:text-[#a78bfa] group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover:rotate-0'>
           <i className='fa-solid fa-book-bookmark text-4xl '></i>
         </div>
       </SmartLink>

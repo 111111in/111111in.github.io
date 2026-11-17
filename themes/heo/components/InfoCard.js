@@ -23,7 +23,7 @@ export function InfoCard(props) {
   const url2 = siteConfig('HEO_INFO_CARD_URL2', null, CONFIG)
   const icon2 = siteConfig('HEO_INFO_CARD_ICON2', null, CONFIG)
   return (
-    <Card className='wow fadeInUp bg-[#4f65f0] dark:bg-yellow-600 text-white flex flex-col w-72 overflow-hidden relative'>
+    <Card className='wow fadeInUp bg-gradient-to-br from-[#7c3aed] to-[#6d28d9] dark:from-[#6d28d9] dark:to-[#4c1d95] text-white flex flex-col w-72 overflow-hidden relative'>
       {/* 信息卡牌第一行 */}
       <div className='flex justify-between'>
         {/* 问候语 */}
@@ -49,14 +49,14 @@ export function InfoCard(props) {
         <div className='flex space-x-3  hover:text-black dark:hover:text-white'>
           {/* 两个社交按钮 */}
           {url1 && (
-            <div className='w-10 text-center bg-indigo-400 p-2 rounded-full  transition-colors duration-200 dark:bg-yellow-500 dark:hover:bg-black hover:bg-white'>
+            <div className='w-10 text-center bg-white/20 p-2 rounded-full  transition-colors duration-200 hover:bg-white/30'>
               <SmartLink href={url1}>
                 <i className={icon1} />
               </SmartLink>
             </div>
           )}
           {url2 && (
-            <div className='bg-indigo-400 p-2 rounded-full w-10 items-center flex justify-center transition-colors duration-200 dark:bg-yellow-500 dark:hover:bg-black hover:bg-white'>
+            <div className='bg-white/20 p-2 rounded-full w-10 items-center flex justify-center transition-colors duration-200 hover:bg-white/30'>
               <SmartLink href={url2}>
                 <i className={icon2} />
               </SmartLink>
@@ -84,7 +84,7 @@ function MoreButton() {
     <SmartLink href={url3}>
       <div
         className={
-          'group bg-indigo-400 dark:bg-yellow-500 hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white flex items-center transition-colors duration-200 py-2 px-3 rounded-full space-x-1'
+          'group bg-white/20 hover:bg-white/30 flex items-center transition-colors duration-200 py-2 px-3 rounded-full space-x-1'
         }>
         <ArrowRightCircle
           className={
@@ -112,7 +112,7 @@ function GreetingsWords() {
   return (
     <div
       onClick={handleChangeGreeting}
-      className=' select-none cursor-pointer py-1 px-2 bg-indigo-400 hover:bg-indigo-50  hover:text-indigo-950 dark:bg-yellow-500 dark:hover:text-white dark:hover:bg-black text-sm rounded-lg  duration-200 transition-colors'>
+      className=' select-none cursor-pointer py-1 px-2 bg-white/20 hover:bg-white/30 text-sm rounded-lg  duration-200 transition-colors'>
       {greeting}
     </div>
   )
