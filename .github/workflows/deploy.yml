@@ -26,15 +26,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
-      - name: Build with Next.js
-        run: npm run export
-        env:
-          NOTION_PAGE_ID: ${{ secrets.NOTION_PAGE_ID }}
+      - name: Build
+        run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
