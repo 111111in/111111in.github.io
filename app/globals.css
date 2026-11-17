@@ -528,61 +528,42 @@ a:hover {
   text-align: center;
 }
 
-/* ---------- 相册 ---------- */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 16px;
-  margin-top: 28px;
-}
-
-.gallery-item {
-  margin: 0;
-  overflow: hidden;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: var(--card);
-}
-
-.gallery-item a {
-  display: block;
-  overflow: hidden;
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.04);
-}
-
-.gallery-item figcaption {
-  padding: 10px 14px;
-  font-size: 13px;
+/* ---------- 首页个人介绍 ---------- */
+.hero-intro {
   color: var(--muted);
+  margin: 20px 0 0;
+  max-width: 640px;
+  line-height: 1.8;
+  font-size: 15px;
 }
 
-/* ---------- 关于 ---------- */
-.about-head {
-  padding: 48px 0 8px;
+.hero-photos {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
 }
 
-.about-text {
-  padding: 24px 0 40px;
+.hero-photos::-webkit-scrollbar {
+  display: none;
 }
 
-.about-text code {
-  font-family: ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, Menlo,
-    monospace;
-  font-size: 0.85em;
-  background: var(--card-2);
-  padding: 2px 6px;
-  border-radius: 6px;
+.hero-photos img {
+  width: 210px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 16px;
 }
 
 /* ---------- 移动端 ---------- */

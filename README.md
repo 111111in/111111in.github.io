@@ -31,9 +31,9 @@ cover: /images/xxx.jpg   # 可选，封面图
 
 编辑 `lib/site.js`：
 
-- `name` / `bio` / `avatar` —— 头像图片放到 `public/images/` 下，填 `/images/xxx.png`（留空则显示字母头像）
+- `name` / `bio` / `intro` / `avatar` —— 名字、一句话简介、详细介绍、头像（头像图片放到 `public/images/` 下，填 `/images/xxx.png`，留空则显示字母头像）
 - `social` —— 社交链接（支持 github / email / twitter / rss / link 图标）
-- `gallery` —— 相册图片列表
+- `photos` —— 首页个人介绍下方的配图列表
 
 ## 开启评论区（Giscus）
 
