@@ -1,5 +1,6 @@
 import { getAllPosts } from '../lib/posts'
 import PostCard from '../components/PostCard'
+import Profile from '../components/Profile'
 
 export default function HomePage() {
   const posts = getAllPosts()
@@ -7,8 +8,7 @@ export default function HomePage() {
   return (
     <div className="container">
       <section className="hero">
-        <h1>你好，我是 llllllin</h1>
-        <p className="hero-sub">全栈开发 · 记录与分享</p>
+        <Profile />
       </section>
 
       <section className="post-list">

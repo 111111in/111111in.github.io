@@ -1,5 +1,6 @@
 import { getAllSlugs, getPostBySlug } from '../../../lib/posts'
 import { formatDate } from '../../../lib/format'
+import Comments from '../../../components/Comments'
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }))
@@ -30,6 +31,7 @@ export default function PostPage({ params }) {
           <h1>{post.title}</h1>
           <div className="post-meta">
             {post.date && <time>{formatDate(post.date)}</time>}
+            {post.readingTime && <span>{post.readingTime}</span>}
             {post.tags?.map((t) => (
               <span key={t} className="tag">
                 {t}
@@ -37,11 +39,19 @@ export default function PostPage({ params }) {
             ))}
           </div>
         </header>
+
+        {post.cover && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img className="post-cover" src={post.cover} alt={post.title} />
+        )}
+
         <div
           className="post-content"
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
       </article>
+
+      <Comments />
     </div>
   )
 }

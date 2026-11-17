@@ -1,3 +1,5 @@
+import Profile from '../../components/Profile'
+
 export const metadata = {
   title: '关于 · llllllin'
 }
@@ -5,10 +7,15 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <div className="container">
-      <h1 className="page-title">关于</h1>
-      <div className="about-body">
-        <p>这里是「关于」页面，之后可以在这里介绍自己。</p>
-        <p>你可以在 <code>app/about/page.js</code> 里修改这段内容。</p>
+      <div className="about-head">
+        <Profile />
+      </div>
+      <div className="about-text">
+        <p>这里是「关于」页面，可以在这里更详细地介绍自己。</p>
+        <p>
+          直接编辑 <code>app/about/page.js</code> 修改这段文字；头像、简介、社交链接在{' '}
+          <code>lib/site.js</code> 里改。
+        </p>
       </div>
     </div>
   )

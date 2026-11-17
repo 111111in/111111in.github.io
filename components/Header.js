@@ -11,6 +11,7 @@ export default function Header() {
         <nav className="site-nav">
           <Link href="/">首页</Link>
           <Link href="/archive">归档</Link>
+          <Link href="/gallery">相册</Link>
           <Link href="/about">关于</Link>
           <ThemeToggle />
         </nav>
