@@ -57,10 +57,10 @@ const Style = () => {
       }
 
       /* 文本选择 */
-      #theme-heo ::selection {
+      ::selection {
         background: rgba(124, 58, 237, 0.18);
       }
-      .dark #theme-heo ::selection {
+      .dark ::selection {
         background: rgba(167, 139, 250, 0.24);
       }
 
@@ -187,7 +187,7 @@ const Style = () => {
         box-sizing: border-box;
       }
 
-      // 标签滚动动画
+      /* 标签滚动动画 */
       .tags-group-wrapper {
         animation: rowup 60s linear infinite;
       }
