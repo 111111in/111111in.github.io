@@ -1,18 +1,37 @@
 import { getAllPosts } from '../lib/posts'
 import PostCard from '../components/PostCard'
 import Profile from '../components/Profile'
+import ModelViewer from '../components/ModelViewer'
 import { siteConfig } from '../lib/site'
 
 export default function HomePage() {
   const posts = getAllPosts()
   const photos = siteConfig.photos || []
+  const model3d = siteConfig.model3d || {}
+  const showModel = Boolean(model3d.showOnHome && model3d.src)
 
   return (
     <div className="container">
       <section className="hero">
-        <Profile />
+        <div className="hero-top">
+          <div className="hero-left">
+            <Profile />
 
-        {siteConfig.intro && <p className="hero-intro">{siteConfig.intro}</p>}
+            {siteConfig.intro && (
+              <p className="hero-intro">{siteConfig.intro}</p>
+            )}
+          </div>
+
+          {showModel && (
+            <div className="hero-model">
+              <ModelViewer
+                src={model3d.src}
+                alt={model3d.title || '3D 模型'}
+                poster={model3d.poster || ''}
+              />
+            </div>
+          )}
+        </div>
 
         {photos.length > 0 && (
           <div className="hero-photos">

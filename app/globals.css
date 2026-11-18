@@ -174,6 +174,47 @@ a:hover {
   padding: 72px 0 40px;
 }
 
+.hero-top {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.hero-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-model {
+  flex-shrink: 0;
+  width: 280px;
+  height: 280px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 30%, var(--card-2), var(--card));
+}
+
+.hero-model model-viewer {
+  width: 100%;
+  height: 100%;
+  display: block;
+  --poster-color: transparent;
+}
+
+@media (max-width: 680px) {
+  .hero-top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .hero-model {
+    width: 100%;
+    height: 300px;
+  }
+}
+
 .hero h1 {
   font-size: clamp(30px, 6vw, 44px);
   letter-spacing: -0.03em;
