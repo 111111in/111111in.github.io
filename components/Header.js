@@ -11,6 +11,7 @@ export default function Header() {
         <nav className="site-nav">
           <Link href="/">首页</Link>
           <Link href="/archive">归档</Link>
+          <Link href="/3d">3D</Link>
           <ThemeToggle />
         </nav>
       </div>

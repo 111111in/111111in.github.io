@@ -575,3 +575,31 @@ a:hover {
   }
 }
 
+/* ---------- 3D 模型展示 ---------- */
+.model-stage {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 20%, var(--card-2), var(--card));
+}
+
+.model-stage model-viewer {
+  width: 100%;
+  height: clamp(360px, 60vw, 540px);
+  display: block;
+  --poster-color: transparent;
+}
+
+.model-caption {
+  color: var(--muted);
+  margin: 0 0 20px;
+  font-size: 15px;
+}
+
+.model-hint {
+  color: var(--faint);
+  font-size: 13.5px;
+  margin-top: 14px;
+  text-align: center;
+}
+
