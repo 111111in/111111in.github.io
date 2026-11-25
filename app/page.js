@@ -2,7 +2,7 @@ import { getAllPosts } from '../lib/posts'
 import Link from 'next/link'
 import PostCard from '../components/PostCard'
 import Profile from '../components/Profile'
-import ModelPreview from '../components/ModelPreview'
+import ModelViewer from '../components/ModelViewer'
 import Showcase from '../components/Showcase'
 import { siteConfig } from '../lib/site'
 
@@ -11,6 +11,7 @@ export default function HomePage() {
   const photos = (siteConfig.photos || []).filter((photo) => photo.src)
   const model3d = siteConfig.model3d || {}
   const showModel = Boolean(model3d.showOnHome && model3d.src)
+  const modelTitle = model3d.title || '3D 模型'
 
   return (
     <div className="container">
@@ -19,7 +20,15 @@ export default function HomePage() {
           <Profile />
 
           {showModel && (
-            <ModelPreview model={model3d} />
+            <figure className="hero-model">
+              <div className="hero-model-stage">
+                <ModelViewer src={model3d.src} alt={modelTitle} poster={model3d.poster} />
+              </div>
+              <figcaption className="hero-model-caption">
+                <span>{modelTitle}</span>
+                <Link className="text-link" href="/3d">进入 3D 展示 <span aria-hidden="true">↗</span></Link>
+              </figcaption>
+            </figure>
           )}
         </div>
 
