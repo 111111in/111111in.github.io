@@ -1,3 +1,5 @@
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
 import { getAllSlugs, getPostBySlug } from '../../../lib/posts'
 import { formatDate } from '../../../lib/format'
 import Comments from '../../../components/Comments'
@@ -9,29 +11,28 @@ export function generateStaticParams() {
 export function generateMetadata({ params }) {
   const post = getPostBySlug(params.slug)
   return {
-    title: post ? `${post.title} · llllllin` : 'llllllin'
+    title: post?.title,
+    description: post?.summary || undefined
   }
 }
 
 export default function PostPage({ params }) {
   const post = getPostBySlug(params.slug)
 
-  if (!post) {
-    return (
-      <div className="container">
-        <div className="empty">文章不存在。</div>
-      </div>
-    )
-  }
+  if (!post) notFound()
 
   return (
-    <div className="container">
+    <div className="container post-container">
       <article className="post">
         <header className="post-header">
+          <Link href="/archive" className="text-link post-back">
+            <span aria-hidden="true">←</span> 文章归档
+          </Link>
           <h1>{post.title}</h1>
+          {post.summary && <p className="post-description">{post.summary}</p>}
           <div className="post-meta">
-            {post.date && <time>{formatDate(post.date)}</time>}
-            {post.readingTime && <span>{post.readingTime}</span>}
+            {post.date && <time dateTime={post.date}>{formatDate(post.date)}</time>}
+            {post.readingTime && <span>阅读 {post.readingTime}</span>}
             {post.tags?.map((t) => (
               <span key={t} className="tag">
                 {t}
@@ -45,13 +46,25 @@ export default function PostPage({ params }) {
           <img className="post-cover" src={post.cover} alt={post.title} />
         )}
 
-        <div
-          className="post-content"
-          dangerouslySetInnerHTML={{ __html: post.html }}
-        />
+        <div className={post.headings.length > 1 ? 'post-layout' : undefined}>
+          {post.headings.length > 1 && (
+            <nav className="post-toc" aria-labelledby="post-toc-title">
+              <h2 id="post-toc-title">本文目录</h2>
+              <ul>
+                {post.headings.map(({ id, title }) => (
+                  <li key={id}><a href={`#${id}`}>{title}</a></li>
+                ))}
+              </ul>
+            </nav>
+          )}
+          <div
+            className="post-content"
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
+        </div>
       </article>
 
-      <Comments />
+      <div className="post-comments"><Comments /></div>
     </div>
   )
 }

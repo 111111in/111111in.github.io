@@ -2,39 +2,32 @@ import { siteConfig } from '../lib/site'
 import { SocialIcon } from './icons'
 
 export default function Profile() {
-  const { name, bio, avatar, social } = siteConfig
+  const { name, bio, intro, avatar, social } = siteConfig
   const initial = (name && name.trim().charAt(0)) || '?'
 
   return (
-    <section className="profile">
+    <div className="profile">
       {avatar ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img className="profile-avatar" src={avatar} alt={name} />
+        <img className="profile-avatar" src={avatar} alt="" />
       ) : (
-        <div className="profile-avatar profile-avatar-fallback">{initial}</div>
+        <div className="profile-avatar profile-avatar-fallback" aria-hidden="true">{initial.toUpperCase()}</div>
       )}
 
-      <div className="profile-info">
-        <h1 className="profile-name">{name}</h1>
-        {bio && <p className="profile-bio">{bio}</p>}
+      <h1 className="profile-name" id="profile-name">{name}</h1>
+      {bio && <p className="profile-bio">{bio}</p>}
+      {intro && <p className="hero-intro">{intro}</p>}
 
-        {social && social.length > 0 && (
-          <div className="profile-social">
-            {social.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                target={s.href && s.href.startsWith('http') ? '_blank' : undefined}
-                rel="noreferrer"
-                aria-label={s.label}
-                title={s.label}
-              >
-                <SocialIcon type={s.type} />
-              </a>
-            ))}
-          </div>
-        )}
-      </div>
-    </section>
+      {social?.length > 0 && (
+        <div className="profile-social">
+          {social.map((s) => (
+            <a key={s.label} href={s.href}>
+              <SocialIcon type={s.type} />
+              <span>{s.label}</span>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
   )
 }

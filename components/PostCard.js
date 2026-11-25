@@ -5,6 +5,9 @@ export default function PostCard({ post }) {
   return (
     <article className="post-card">
       <Link href={`/posts/${post.slug}`} className="post-card-link">
+        <div className="post-card-date">
+          {post.date && <time dateTime={post.date}>{formatDate(post.date)}</time>}
+        </div>
         {post.cover && (
           <div className="post-card-cover">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -12,10 +15,9 @@ export default function PostCard({ post }) {
           </div>
         )}
         <div className="post-card-body">
-          <h2 className="post-card-title">{post.title}</h2>
+          <h3 className="post-card-title">{post.title}</h3>
           {post.summary && <p className="post-card-summary">{post.summary}</p>}
           <div className="post-card-meta">
-            {post.date && <time>{formatDate(post.date)}</time>}
             {post.tags?.map((t) => (
               <span key={t} className="tag">
                 {t}
@@ -23,6 +25,7 @@ export default function PostCard({ post }) {
             ))}
           </div>
         </div>
+        <span className="post-card-arrow" aria-hidden="true">↗</span>
       </Link>
     </article>
   )

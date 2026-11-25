@@ -2,7 +2,7 @@ import ModelViewer from '../../components/ModelViewer'
 import { siteConfig } from '../../lib/site'
 
 export const metadata = {
-  title: '3D · llllllin'
+  title: '3D 展示'
 }
 
 export default function ThreeDPage() {
@@ -22,7 +22,7 @@ export default function ThreeDPage() {
       </div>
 
       <p className="model-hint">
-        🖱️ 拖拽旋转 · 滚轮缩放 · 手机上可点击「在空间中查看」体验 AR
+        拖拽旋转，滚轮或双指缩放。支持 AR 的设备可在空间中查看模型。
       </p>
     </div>
   )

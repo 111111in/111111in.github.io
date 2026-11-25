@@ -1,19 +1,35 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import ThemeToggle from './ThemeToggle'
+import { siteConfig } from '../lib/site'
+
+const links = [
+  { href: '/', label: '首页' },
+  { href: '/archive', label: '归档' },
+  { href: '/3d', label: '3D 展示' }
+]
 
 export default function Header() {
+  const pathname = usePathname().replace(/\/$/, '') || '/'
+
   return (
     <header className="site-header">
       <div className="header-inner">
         <Link href="/" className="site-title">
-          llllllin<span className="dot">.</span>
+          {siteConfig.name}<span className="dot">.</span>
         </Link>
-        <nav className="site-nav">
-          <Link href="/">首页</Link>
-          <Link href="/archive">归档</Link>
-          <Link href="/3d">3D</Link>
+        <div className="header-actions">
+          <nav className="site-nav" aria-label="主导航">
+            {links.map(({ href, label }) => (
+              <Link key={href} href={href} aria-current={pathname === href ? 'page' : undefined}>
+                {label}
+              </Link>
+            ))}
+          </nav>
           <ThemeToggle />
-        </nav>
+        </div>
       </div>
     </header>
   )
