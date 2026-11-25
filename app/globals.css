@@ -255,8 +255,7 @@ button { font: inherit; }
   margin: 0;
 }
 
-.hero-model-stage,
-.model-stage {
+.hero-model-stage {
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -292,9 +291,10 @@ button { font: inherit; }
 
 .hero-model-caption {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 3px 12px;
   padding-top: 8px;
   color: var(--muted);
   font-size: 13px;
@@ -634,19 +634,6 @@ button { font: inherit; }
 
 .comments-placeholder { color: var(--muted); }
 
-.model-caption,
-.model-hint {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.model-caption { margin: 8px 0 18px; }
-
-.model-hint {
-  margin: 12px 0 0;
-  text-align: center;
-}
-
 .model-viewer,
 .model-viewer model-viewer {
   display: block;
@@ -654,8 +641,6 @@ button { font: inherit; }
   height: 100%;
   --poster-color: transparent;
 }
-
-.model-stage { height: clamp(330px, 60vw, 570px); }
 
 .model-status {
   position: absolute;

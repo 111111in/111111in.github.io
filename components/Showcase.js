@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { siteConfig } from '../lib/site'
 import styles from './Showcase.module.css'
 
-export default function Showcase({ model }) {
+export default function Showcase() {
   return (
     <>
       <section className={styles.section} aria-labelledby="home-lab">
@@ -23,38 +23,18 @@ export default function Showcase({ model }) {
 
       <section className={styles.section} aria-labelledby="home-projects">
         <h2 className="section-title" id="home-projects">项目与作品</h2>
-        <div className={styles.projects}>
-          <article className={styles.project}>
-            <div className={`${styles.art} ${styles.pipeline}`} role="img" aria-label="Markdown 经 Next.js 构建后部署到 GitHub Pages">
-              <span>Markdown</span><span aria-hidden="true">→</span>
-              <span>Next.js</span><span aria-hidden="true">→</span>
-              <span>GitHub Pages</span>
-            </div>
-            <div className={styles.projectCopy}>
-              <h3>个人技术博客</h3>
-              <p>用 Markdown 写作，通过 GitHub Actions 构建和发布静态页面。</p>
-              <a href={siteConfig.repository} className="text-link">查看源码 <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
-
-          {model.src && (
-            <article className={styles.project}>
-              <div className={`${styles.art} ${styles.model}`} aria-hidden="true">
-                {model.poster ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={model.poster} loading="lazy" alt="" />
-                ) : (
-                  <span aria-hidden="true">3D</span>
-                )}
-              </div>
-              <div className={styles.projectCopy}>
-                <h3>交互式 3D 展示</h3>
-                <p>用 model-viewer 在网页中展示模型，支持拖拽旋转、缩放与兼容设备上的 AR 预览。</p>
-                <Link className="text-link" href="/3d">查看作品 <span aria-hidden="true">→</span></Link>
-              </div>
-            </article>
-          )}
-        </div>
+        <article className={styles.project}>
+          <div className={styles.projectCopy}>
+            <h3>个人技术博客</h3>
+            <p>用 Markdown 写作，通过 GitHub Actions 构建和发布静态页面。</p>
+            <a href={siteConfig.repository} className="text-link">查看源码 <span aria-hidden="true">↗</span></a>
+          </div>
+          <div className={styles.pipeline} role="img" aria-label="Markdown 经 Next.js 构建后部署到 GitHub Pages">
+            <span>Markdown</span><span aria-hidden="true">→</span>
+            <span>Next.js</span><span aria-hidden="true">→</span>
+            <span>GitHub Pages</span>
+          </div>
+        </article>
       </section>
     </>
   )

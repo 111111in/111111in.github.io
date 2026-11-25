@@ -26,7 +26,7 @@ export default function HomePage() {
               </div>
               <figcaption className="hero-model-caption">
                 <span>{modelTitle}</span>
-                <Link className="text-link" href="/3d">进入 3D 展示 <span aria-hidden="true">↗</span></Link>
+                {model3d.caption && <span>{model3d.caption}</span>}
               </figcaption>
             </figure>
           )}
@@ -55,7 +55,7 @@ export default function HomePage() {
           posts.map((post) => <PostCard key={post.slug} post={post} />)
         )}
       </section>
-      <Showcase model={model3d} />
+      <Showcase />
     </div>
   )
 }
