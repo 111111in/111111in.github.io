@@ -8,7 +8,8 @@ import { siteConfig } from '../lib/site'
 const links = [
   { href: '/', label: '首页' },
   { href: '/archive', label: '归档' },
-  { href: '/3d', label: '3D 展示' }
+  { href: '/lab', label: '实验室' },
+  { href: '/3d', label: '3D' }
 ]
 
 export default function Header() {

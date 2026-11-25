@@ -772,3 +772,15 @@ button { font: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .model-preview img { transition: none; }
 }
+
+@media (max-width: 430px) {
+  .header-actions { gap: 7px; }
+
+  .site-title { font-size: 19px; }
+
+  .site-nav { font-size: 13px; }
+
+  .site-nav a { padding-inline: 6px; }
+
+  .theme-toggle { width: 34px; height: 34px; }
+}

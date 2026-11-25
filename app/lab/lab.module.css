@@ -1,0 +1,236 @@
+.heading { margin-bottom: 22px; }
+
+.heading p,
+.notes p {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.lab {
+  padding: clamp(10px, 2vw, 18px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.controls button {
+  padding: 7px clamp(8px, 2vw, 14px);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.controls button:hover,
+.controls button[aria-pressed='true'] {
+  border-color: var(--stage-line);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.controls button[aria-pressed='true'] { font-weight: 650; }
+
+.board {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+}
+
+.editor {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #4c3d59;
+  border-radius: 12px;
+  background: #231a30;
+  color: #f1e6ff;
+}
+
+.editorBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 49px;
+  padding: 7px 12px;
+  border-bottom: 1px solid #4c3d59;
+  font: 13px/1.45 ui-monospace, 'Cascadia Code', Consolas, monospace;
+}
+
+.editorBar button {
+  padding: 4px 8px;
+  border: 1px solid #696078;
+  border-radius: 6px;
+  background: #342641;
+  color: inherit;
+  font: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.editorBar button:hover { border-color: #c6aaff; }
+
+.editorBar button:focus-visible,
+.editor pre:focus-visible {
+  outline-color: #c6aaff;
+  outline-offset: -2px;
+}
+
+.copyMessage {
+  flex: 1;
+  color: #d4c0ec;
+  text-align: end;
+}
+
+.editor pre {
+  min-height: calc(11 * 1.65em + 24px);
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 0;
+  padding: 12px 0;
+  tab-size: 4;
+  font: 13px/1.65 ui-monospace, 'Cascadia Code', Consolas, monospace;
+}
+
+.editor pre code {
+  display: inline-block;
+  min-width: 100%;
+  font: inherit;
+}
+
+.editor pre span {
+  display: inline-block;
+  min-width: 100%;
+  padding-inline: 14px;
+}
+
+.editor pre .highlight {
+  box-shadow: inset 2px 0 #cdadff;
+  background: #473458;
+  color: #fff;
+}
+
+.result {
+  min-width: 0;
+  padding: clamp(14px, 2vw, 20px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card-2);
+}
+
+.result h2,
+.diagnostic h3 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.memory {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.memorySlot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 57px;
+  padding: 7px 10px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.memorySlot[data-active='true'] {
+  border: 1px solid var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.memorySlot code {
+  padding: 0 9px;
+  border: 1px solid var(--stage-line);
+  border-radius: 5px;
+  background: var(--card);
+  font-size: 15px;
+}
+
+.flow {
+  visibility: hidden;
+  color: var(--accent);
+}
+
+.flow[data-escapes='true'] { visibility: visible; }
+
+.resultSummary {
+  margin: 7px 0 12px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.resultSummary span {
+  margin-inline: 3px;
+  color: var(--muted);
+}
+
+.diagnostic {
+  padding: 8px 11px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+}
+
+.diagnostic h3 { font-size: 12px; color: var(--muted); }
+
+.diagnostic code {
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.explanation {
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+
+.notes {
+  max-width: var(--reading-w);
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.notes p { margin-bottom: 7px; }
+
+.notes code {
+  border-radius: 4px;
+  padding: 1px 4px;
+  background: var(--card-2);
+  color: var(--fg);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 680px) {
+  .board { grid-template-columns: minmax(0, 1fr); }
+
+  .editor pre { min-height: 0; }
+}
+
+@media (max-width: 360px) {
+  .controls { gap: 5px; }
+
+  .controls button { padding-inline: 7px; font-size: 13px; }
+
+  .editorBar { padding-inline: 8px; }
+}

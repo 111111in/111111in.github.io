@@ -3,6 +3,7 @@ import Link from 'next/link'
 import PostCard from '../components/PostCard'
 import Profile from '../components/Profile'
 import ModelPreview from '../components/ModelPreview'
+import Showcase from '../components/Showcase'
 import { siteConfig } from '../lib/site'
 
 export default function HomePage() {
@@ -45,6 +46,7 @@ export default function HomePage() {
           posts.map((post) => <PostCard key={post.slug} post={post} />)
         )}
       </section>
+      <Showcase model={model3d} />
     </div>
   )
 }
