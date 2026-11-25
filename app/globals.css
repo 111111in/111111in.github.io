@@ -626,13 +626,28 @@ button { font: inherit; }
 .post-content th { background: var(--card-2); }
 
 .comments {
-  margin-top: 38px;
+  margin-top: 30px;
   border-top: 1px solid var(--border);
-  padding-top: 26px;
-  min-height: 100px;
+  padding-top: 16px;
 }
 
-.comments-placeholder { color: var(--muted); }
+.comments h2 {
+  margin: 0 0 8px;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.comments .giscus-frame {
+  display: block;
+  width: 100%;
+  border: 0;
+}
+
+.comments-placeholder {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
 
 .model-viewer,
 .model-viewer model-viewer {

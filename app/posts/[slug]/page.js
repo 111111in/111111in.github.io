@@ -64,7 +64,7 @@ export default function PostPage({ params }) {
         </div>
       </article>
 
-      <div className="post-comments"><Comments /></div>
+      <div className="post-comments"><Comments key={post.slug} /></div>
     </div>
   )
 }

@@ -1,68 +1,84 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { siteConfig } from '../lib/site'
+
+const giscusOrigin = 'https://giscus.app'
+const { repo, repoId, category, categoryId } = siteConfig.giscus || {}
+const configured = Boolean(repo && repoId && category && categoryId)
+
+function commentTheme() {
+  const mode = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+  return window.location.protocol === 'https:'
+    ? `${window.location.origin}/giscus/${mode}.css`
+    : mode
+}
 
 export default function Comments() {
   const ref = useRef(null)
-  const giscus = siteConfig.giscus || {}
-  const configured = Boolean(
-    giscus.repo && giscus.repoId && giscus.category && giscus.categoryId
-  )
+  const [unavailable, setUnavailable] = useState(false)
 
   useEffect(() => {
     if (!configured) return
 
-    const load = (theme) => {
-      const container = ref.current
-      if (!container) return
-      container.innerHTML = ''
+    const container = ref.current
+    const script = document.createElement('script')
+    script.src = `${giscusOrigin}/client.js`
+    script.async = true
+    script.crossOrigin = 'anonymous'
+    script.onerror = () => setUnavailable(true)
+    Object.assign(script.dataset, {
+      repo,
+      repoId,
+      category,
+      categoryId,
+      mapping: 'pathname',
+      reactionsEnabled: '0',
+      emitMetadata: '0',
+      inputPosition: 'top',
+      theme: commentTheme(),
+      lang: 'zh-CN',
+      loading: 'lazy'
+    })
 
-      const s = document.createElement('script')
-      s.src = 'https://giscus.app/client.js'
-      s.async = true
-      s.crossOrigin = 'anonymous'
-      s.setAttribute('data-repo', giscus.repo)
-      s.setAttribute('data-repo-id', giscus.repoId)
-      s.setAttribute('data-category', giscus.category)
-      s.setAttribute('data-category-id', giscus.categoryId)
-      s.setAttribute('data-mapping', 'pathname')
-      s.setAttribute('data-reactions-enabled', '1')
-      s.setAttribute('data-emit-metadata', '0')
-      s.setAttribute('data-input-position', 'top')
-      s.setAttribute('data-theme', theme)
-      s.setAttribute('data-lang', 'zh-CN')
-      s.setAttribute('data-loading', 'lazy')
-      container.appendChild(s)
+    const frameWindow = () => container.querySelector('iframe.giscus-frame')?.contentWindow
+    const syncTheme = () => {
+      const theme = commentTheme()
+      script.dataset.theme = theme
+      frameWindow()?.postMessage({ giscus: { setConfig: { theme } } }, giscusOrigin)
     }
 
-    load(document.documentElement.classList.contains('dark') ? 'dark' : 'light')
+    // iframe 首次完成布局后补发主题，覆盖懒加载期间的配色切换。
+    const onFirstResize = (event) => {
+      if (event.origin !== giscusOrigin || event.source !== frameWindow()) return
+      if (typeof event.data?.giscus?.resizeHeight !== 'number') return
+      window.removeEventListener('message', onFirstResize)
+      syncTheme()
+    }
 
-    // 深色/浅色切换时同步评论区的主题
-    const observer = new MutationObserver(() => {
-      const dark = document.documentElement.classList.contains('dark')
-      const frame = document.querySelector('iframe.giscus-frame')
-      if (frame) {
-        frame.contentWindow.postMessage(
-          { giscus: { setConfig: { theme: dark ? 'dark' : 'light' } } },
-          'https://giscus.app'
-        )
-      }
-    })
+    const observer = new MutationObserver(syncTheme)
     observer.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ['class']
     })
-    return () => observer.disconnect()
-  }, [configured, giscus.repo, giscus.repoId, giscus.category, giscus.categoryId])
+    window.addEventListener('message', onFirstResize)
+    container.appendChild(script)
 
-  if (!configured) {
-    return (
-      <div className="comments comments-placeholder">
-        评论功能暂未开启。按照 README.md 里的步骤配置 Giscus 后即可使用评论区。
-      </div>
-    )
-  }
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('message', onFirstResize)
+      script.onerror = null
+      container.replaceChildren()
+    }
+  }, [])
 
-  return <div className="comments" ref={ref} />
+  if (!configured) return null
+
+  return (
+    <section className="comments" aria-labelledby="comments-title">
+      <h2 id="comments-title">评论</h2>
+      <div className="giscus" ref={ref} />
+      {unavailable && <p className="comments-placeholder" role="status">评论暂时无法加载。</p>}
+    </section>
+  )
 }
